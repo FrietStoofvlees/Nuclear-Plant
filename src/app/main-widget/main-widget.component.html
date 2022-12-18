@@ -1,5 +1,14 @@
-<select name="tempUnit" id="tempUnit" [ngModel]="unit" (ngModelChange)="onChange($event)">
-    <option value="K">Kelvin</option>
-    <option value="°C">Celsius</option>
-    <option value="°F">Fahrenheit</option>
-</select>
+<p>
+    Average temperature of the reactors:
+</p>
+<p>
+    Alerts:
+</p>
+<p>
+    Unit of the temperature:
+    <select name="tempUnit" id="tempUnit" [ngModel]="unit" (ngModelChange)="onChange($event)">
+        <option value="K">Kelvin</option>
+        <option value="°C">Celsius</option>
+        <option value="°F">Fahrenheit</option>
+    </select>
+</p>

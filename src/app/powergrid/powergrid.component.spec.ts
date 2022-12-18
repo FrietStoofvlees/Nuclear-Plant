@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainWidgetComponent } from './main-widget.component';
+import { PowergridComponent } from './powergrid.component';
 
-describe('MainWidgetComponent', () => {
-  let component: MainWidgetComponent;
-  let fixture: ComponentFixture<MainWidgetComponent>;
+describe('PowergridComponent', () => {
+  let component: PowergridComponent;
+  let fixture: ComponentFixture<PowergridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MainWidgetComponent]
+      declarations: [PowergridComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(MainWidgetComponent);
+    fixture = TestBed.createComponent(PowergridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

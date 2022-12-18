@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Nuclear-Plant';
   plants = 10;
-  unit = '';
+  unit = "K";
 
   setUnit(unit: string) {
     this.unit = unit;

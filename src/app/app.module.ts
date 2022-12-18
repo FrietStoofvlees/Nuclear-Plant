@@ -3,16 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ReactorComponentComponent } from './reactor-component/reactor-component.component';
+import { ReactorComponent } from './reactor/reactor.component';
 import { TemperaturePipePipe } from './temperature-pipe.pipe';
 import { MainWidgetComponent } from './main-widget/main-widget.component';
+import { PowergridComponent } from './powergrid/powergrid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReactorComponentComponent,
+    ReactorComponent,
     TemperaturePipePipe,
-    MainWidgetComponent
+    MainWidgetComponent,
+    PowergridComponent
   ],
   imports: [
     BrowserModule, FormsModule

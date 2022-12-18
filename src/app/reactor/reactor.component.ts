@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ReactorState } from '../reactor-state';
 
 @Component({
-  selector: 'app-reactor-component',
-  templateUrl: './reactor-component.component.html',
-  styleUrls: ['./reactor-component.component.scss']
+  selector: 'app-reactor',
+  templateUrl: './reactor.component.html',
+  styleUrls: ['./reactor.component.scss']
 })
-export class ReactorComponentComponent implements OnInit {
+export class ReactorComponent implements OnInit {
 
   state: ReactorState = ReactorState.stopped;
   temperature: number = 300;

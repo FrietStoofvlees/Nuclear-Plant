@@ -1,5 +1,6 @@
 <app-main-widget (unitChanged)="setUnit($event)"></app-main-widget>
 
+
 <ng-container *ngFor="let _ of [].constructor(plants); let i = index">
-  <app-reactor-component name="Reactor {{i+1}}" unit="{{unit}}"></app-reactor-component>
+  <app-reactor name="Reactor {{i+1}}" unit="{{unit}}"></app-reactor>
 </ng-container>
