@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Nuclear-Plant';
+  plants = 10;
+  unit = '';
+
+  setUnit(unit: string) {
+    this.unit = unit;
+  }
 }
