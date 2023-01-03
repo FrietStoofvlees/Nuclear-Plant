@@ -1,1 +1,14 @@
-<p>powergrid works!</p>
+<table>
+    <ng-container *ngFor="let line of [].constructor(getPowerlines()); let i = index">
+        <!-- <ng-container *ngIf="i == getPowerlines()-1; else fullPowerline">
+            <tr>
+                <app-powerline [reactors]="getReactorSet(i)" [unit]="unit"></app-powerline>
+            </tr>
+        </ng-container> -->
+        <!-- <ng-template #fullPowerline> -->
+        <tr>
+            <app-powerline [reactors]="getReactorSet(i)" [unit]="unit"></app-powerline>
+        </tr>
+        <!-- </ng-template> -->
+    </ng-container>
+</table>
