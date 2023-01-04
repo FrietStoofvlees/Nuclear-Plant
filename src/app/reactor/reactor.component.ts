@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IReactor } from '../ireactor';
 import { ReactorState } from '../reactor-state';
 
 @Component({
@@ -8,10 +9,12 @@ import { ReactorState } from '../reactor-state';
 })
 export class ReactorComponent implements OnInit {
 
-  state: ReactorState = ReactorState.stopped;
-  temperature: number = 300;
-  @Input() unit!: string;
   @Input() name!: string;
+  state: ReactorState = ReactorState.stopped;
+  @Output() stateChanged = new EventEmitter<IReactor>();
+  temperature: number = 300;
+
+  @Input() unit!: string;
   btnText: string = "Start";
 
   constructor() { }
@@ -27,6 +30,8 @@ export class ReactorComponent implements OnInit {
       this.state = ReactorState.stopped;
       this.btnText = "Start";
     }
+    let reactor: IReactor = { name: parseInt(this.name.replace(/\D/g, '')), temperature: this.temperature, state: this.state }
+    this.stateChanged.emit(reactor);
   }
 
   getState(): string {

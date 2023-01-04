@@ -25,7 +25,7 @@ export class ReactorDataService {
     return Math.ceil(this.reactors / 3);
   }
 
-  createReactors() {
+  createReactors(): void {
     this.reactorArray = [];
     for (let index = 0; index < this.reactors; index++) {
       let reactor: IReactor = { name: index + 1, temperature: 300, state: ReactorState.stopped };
@@ -36,5 +36,11 @@ export class ReactorDataService {
   setReactors(newValue: number): void {
     this.reactors = newValue;
     this.createReactors();
+  }
+
+  updateArray(reactor: IReactor): void {
+    //TODO:
+    //let updateReactor = this.reactorArray.find(r => r.name === reactor.name);
+    //this.reactorArray = this.reactorArray.map((r) => r.name === reactor.name ? reactor : r);
   }
 }

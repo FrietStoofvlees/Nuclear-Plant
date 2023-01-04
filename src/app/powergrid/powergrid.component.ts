@@ -26,7 +26,6 @@ export class PowergridComponent implements OnInit {
     let array = this.data.getReactorArray();
     if (Array.isArray(array)) {
       array = array.slice(index * 3, (index + 1) * 3)
-      console.log(array);
     }
     return array;
   }

@@ -8,9 +8,9 @@ describe('PowerlineComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PowerlineComponent ]
+      declarations: [PowerlineComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PowerlineComponent);
     component = fixture.componentInstance;

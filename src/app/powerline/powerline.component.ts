@@ -17,4 +17,7 @@ export class PowerlineComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setState(reactor: IReactor): void {
+    this.data.updateArray(reactor);
+  }
 }
