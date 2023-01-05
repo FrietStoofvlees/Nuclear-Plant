@@ -28,7 +28,7 @@ export class ReactorDataService {
   createReactors(): void {
     this.reactorArray = [];
     for (let index = 0; index < this.reactors; index++) {
-      let reactor: IReactor = { name: index + 1, temperature: 300, state: ReactorState.stopped };
+      let reactor: IReactor = { name: index + 1, temperature: this.genRandomTemp(), state: ReactorState.stopped };
       this.reactorArray.push(reactor);
     }
   }
@@ -39,8 +39,15 @@ export class ReactorDataService {
   }
 
   updateArray(reactor: IReactor): void {
-    //TODO:
-    //let updateReactor = this.reactorArray.find(r => r.name === reactor.name);
-    //this.reactorArray = this.reactorArray.map((r) => r.name === reactor.name ? reactor : r);
+    this.reactorArray.forEach(r => {
+      if (reactor.name == r.name) {
+        r.state = reactor.state;
+      }
+    });
+    console.log(this.reactorArray);
+  }
+
+  genRandomTemp(): number {
+    return Math.round(((Math.random() * (540 - 400) + 400) + Number.EPSILON) * 100) / 100;
   }
 }

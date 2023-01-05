@@ -1,5 +1,6 @@
 <ng-container *ngFor="let reactor of reactors">
     <td>
-        <app-reactor name="Reactor {{reactor.name}}" unit="{{unit}}" (stateChanged)="setState($event)"></app-reactor>
+        <app-reactor name="Reactor {{reactor.name}}" [temperature]="reactor.temperature" unit="{{unit}}"
+            (stateChanged)="setState($event)"></app-reactor>
     </td>
 </ng-container>

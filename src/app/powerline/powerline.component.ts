@@ -19,5 +19,6 @@ export class PowerlineComponent implements OnInit {
 
   setState(reactor: IReactor): void {
     this.data.updateArray(reactor);
+    console.log(reactor);
   }
 }

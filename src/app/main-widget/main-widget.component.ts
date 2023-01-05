@@ -25,23 +25,24 @@ export class MainWidgetComponent implements OnInit {
 
   getAverageTemp(): number {
     let array = this.data.getReactorArray();
-    console.log(array);
     let activeReactors: IReactor[] = [];
     if (Array.isArray(array)) {
       array.forEach(reactor => {
         if (reactor.state == ReactorState.running) {
-          console.log('t');
           activeReactors.push(reactor);
         }
       });
     }
-    console.log(activeReactors);
 
     let avgTemp = 0;
+
     activeReactors.forEach(reactor => {
       avgTemp += reactor.temperature;
     });
-    console.log(avgTemp);
-    return avgTemp / activeReactors.length;
+
+    if (avgTemp == 0) {
+      return 0;
+    }
+    return Math.round(((avgTemp / activeReactors.length) + Number.EPSILON) * 100) / 100;
   }
 }

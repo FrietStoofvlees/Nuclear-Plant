@@ -16,7 +16,7 @@ export class TemperaturePipePipe implements PipeTransform {
           temp = Math.round((((value - 32) / 1.8) + Number.EPSILON) * 100) / 100;
           break;
         case 'K':
-          temp = value + 273.15;
+          temp = Math.round(((value + 273.15) + Number.EPSILON) * 100) / 100;
           break;
         default:
           break;
