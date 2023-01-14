@@ -10,7 +10,7 @@ import { ReactorState } from '../reactor-state';
 export class ReactorComponent implements OnInit {
 
   @Input() name!: string;
-  state: ReactorState = ReactorState.stopped;
+  @Input() state!: ReactorState;
   @Output() stateChanged = new EventEmitter<IReactor>();
   @Input() temperature!: number;
 
@@ -30,7 +30,6 @@ export class ReactorComponent implements OnInit {
       this.state = ReactorState.stopped;
       this.btnText = "Start";
     }
-    console.log(this.btnText);
 
     let reactor: IReactor = { name: parseInt(this.name.replace(/\D/g, '')), temperature: this.temperature, state: this.state }
     this.stateChanged.emit(reactor);

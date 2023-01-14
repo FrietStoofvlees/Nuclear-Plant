@@ -1,6 +1,6 @@
-<ng-container *ngFor="let reactor of reactors">
+<ng-container *ngFor="let reactor of getReactors()">
     <td>
-        <app-reactor name="Reactor {{reactor.name}}" [temperature]="reactor.temperature" unit="{{unit}}"
-            (stateChanged)="setState($event)"></app-reactor>
+        <app-reactor name="Reactor {{reactor.name}}" [state]="reactor.state" [temperature]="reactor.temperature"
+            unit="{{unit}}" (stateChanged)="setState($event)"></app-reactor>
     </td>
 </ng-container>

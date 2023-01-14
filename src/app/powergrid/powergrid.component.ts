@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IReactor } from '../ireactor';
+import { IReactor, IPowerline } from '../ireactor';
 import { ReactorDataService } from '../reactor-data.service';
 
 @Component({
@@ -22,11 +22,8 @@ export class PowergridComponent implements OnInit {
     return this.data.getNumberOfPowerlines();
   }
 
-  getReactorSet(index: number): IReactor[] {
-    let array = this.data.getReactorArray();
-    if (Array.isArray(array)) {
-      array = array.slice(index * 3, (index + 1) * 3)
-    }
-    return array;
+  getReactorSet(index: number): IPowerline {
+    let powerlines = this.data.getPowerGrid();
+    return powerlines[index];
   }
 }

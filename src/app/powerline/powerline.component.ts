@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IReactor } from '../ireactor';
+import { IReactor, IPowerline } from '../ireactor';
 import { ReactorDataService } from '../reactor-data.service';
 
 @Component({
@@ -10,11 +10,15 @@ import { ReactorDataService } from '../reactor-data.service';
 export class PowerlineComponent implements OnInit {
 
   @Input() unit!: string;
-  @Input() reactors!: IReactor[];
+  @Input() powerline!: IPowerline;
 
   constructor(private data: ReactorDataService) { }
 
   ngOnInit(): void {
+  }
+
+  getReactors(): IReactor[] {
+    return this.powerline.reactors;
   }
 
   setState(reactor: IReactor): void {

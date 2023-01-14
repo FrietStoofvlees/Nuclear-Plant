@@ -24,15 +24,15 @@ export class MainWidgetComponent implements OnInit {
   }
 
   getAverageTemp(): number {
-    let array = this.data.getReactorArray();
+    let powerlines = this.data.getPowerGrid();
     let activeReactors: IReactor[] = [];
-    if (Array.isArray(array)) {
-      array.forEach(reactor => {
+    powerlines.forEach(powerline => {
+      powerline.reactors.forEach(reactor => {
         if (reactor.state == ReactorState.running) {
           activeReactors.push(reactor);
         }
       });
-    }
+    });
 
     let avgTemp = 0;
 
@@ -44,5 +44,23 @@ export class MainWidgetComponent implements OnInit {
       return 0;
     }
     return Math.round(((avgTemp / activeReactors.length) + Number.EPSILON) * 100) / 100;
+  }
+
+  getAlerts() {
+    let powerlines = this.data.getPowerGrid();
+    let alerts: string[] = [];
+    powerlines.forEach(powerline => {
+      powerline.reactors.forEach(reactor => {
+        if (reactor.state == ReactorState.meltdown) {
+          alerts.push(` Reactor ${reactor.name}`);
+        }
+      });
+    });
+
+    if (alerts.length) {
+      return alerts + " in meltdown";
+    } else {
+      return alerts;
+    }
   }
 }
