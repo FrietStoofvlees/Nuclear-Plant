@@ -1,5 +1,5 @@
 <p>{{name}}</p>
 <p>State: {{getState()}}</p>
 <p>Temperature: {{temperature | temperaturePipe : unit}} {{unit}}</p>
-<button (click)="changeState()">{{btnText}}</button>
+<button (click)="changeState()">{{getState() | buttonPipe}}</button>
 <button (click)="remove()">Remove</button>

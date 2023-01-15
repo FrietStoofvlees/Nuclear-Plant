@@ -8,6 +8,7 @@ import { TemperaturePipePipe } from './temperature-pipe.pipe';
 import { MainWidgetComponent } from './main-widget/main-widget.component';
 import { PowergridComponent } from './powergrid/powergrid.component';
 import { PowerlineComponent } from './powerline/powerline.component';
+import { ButtonPipePipe } from './button-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PowerlineComponent } from './powerline/powerline.component';
     TemperaturePipePipe,
     MainWidgetComponent,
     PowergridComponent,
-    PowerlineComponent
+    PowerlineComponent,
+    ButtonPipePipe
   ],
   imports: [
     BrowserModule, FormsModule

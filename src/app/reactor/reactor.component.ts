@@ -15,7 +15,6 @@ export class ReactorComponent implements OnInit {
   @Input() temperature!: number;
 
   @Input() unit!: string;
-  btnText: string = "Start";
 
   constructor() { }
 
@@ -29,15 +28,11 @@ export class ReactorComponent implements OnInit {
   changeState(): void {
     if (this.getState() == "stopped") {
       this.state = ReactorState.running;
-      this.btnText = "Stop";
     } else {
       this.state = ReactorState.stopped;
-      this.btnText = "Start";
     }
 
     this.sendEvent();
-    //let reactor: IReactor = { name: parseInt(this.name.replace(/\D/g, '')), temperature: this.temperature, state: this.state }
-    //this.stateChanged.emit(reactor);
   }
 
   remove(): void {
