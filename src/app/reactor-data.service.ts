@@ -23,6 +23,7 @@ export class ReactorDataService {
               reactor.state = ReactorState.stopped;
             } else if (reactor.temperature >= 600) {
               reactor.state = ReactorState.meltdown;
+              this.meltdownSequence(powerline);
             }
           };
         });
@@ -155,6 +156,18 @@ export class ReactorDataService {
     let max = temp + 5 * 20;
     let min = temp - 5 * 10;
     return Math.round(((Math.random() * (max - min) + min) + Number.EPSILON) * 100) / 100;
+  }
+
+  meltdownSequence(powerline: IPowerline): void {
+    powerline.reactors.forEach(reactor => {
+      if (reactor.state == ReactorState.running) {
+        if (Math.random() < 0.5) {
+          reactor.state = ReactorState.meltdown;
+        } else {
+          reactor.state = ReactorState.stopped;
+        }
+      }
+    });
   }
 
   reset(): void {
