@@ -53,38 +53,49 @@ export class ReactorDataService {
   addReactor(): void {
     let done = 0;
     this.powergrid.forEach((powerline, index) => {
-      let length = powerline.reactors.length;
       if (!done) {
-        if (length < 3) {
-          let name = 0;
-          powerline.reactors.forEach(r => {
-            name += r.name
-          });
-          if (length == 2) {
-            name = (index * 9 + 6) - name;
-          } else {
-            let sum = (index + 1) * 3
-            switch (sum - name) {
-              case 0:
-                name = name - 2;
-                break;
-              case 1:
-                name = name - 1;
-                break;
-              case 2:
-                name = name + 1;
-                break;
-              default:
-                break;
-            }
-          }
+        if (powerline.reactors.length < 1) {
+          let sum = index * 9 + 6;
+          let name = sum - (5 + index * 6);
+
           let reactor: IReactor = { name: name, temperature: 0, state: ReactorState.stopped };
           powerline.reactors.push(reactor);
           this.reactors++;
           done = 1;
+        } else {
+          let length = powerline.reactors.length;
+          if (length < 3) {
+            let name = 0;
+            powerline.reactors.forEach(r => {
+              name += r.name
+            });
+            if (length == 2) {
+              name = (index * 9 + 6) - name;
+            } else {
+              let sum = (index + 1) * 3
+              switch (sum - name) {
+                case 0:
+                  name = name - 2;
+                  break;
+                case 1:
+                  name = name - 1;
+                  break;
+                case 2:
+                  name = name + 1;
+                  break;
+                default:
+                  break;
+              }
+            }
+            let reactor: IReactor = { name: name, temperature: 0, state: ReactorState.stopped };
+            powerline.reactors.push(reactor);
+            this.reactors++;
+            done = 1;
+          }
         }
       }
       powerline.reactors.sort((x, y) => x.name - y.name);
+      console.log(powerline);
     });
 
     if (!done) {
@@ -120,7 +131,6 @@ export class ReactorDataService {
 
   setReactors(newValue: number): void {
     this.reactors = newValue;
-    this.createPowergrid();
   }
 
   updateArray(reactor: IReactor): void {
@@ -131,8 +141,8 @@ export class ReactorDataService {
           if (r.state == ReactorState.running) {
             r.temperature = this.genRandomTemp();
           } else if (r.state == ReactorState.destruct) {
-            if (powerline.reactors.length < 2) {
-              let index = this.powergrid.indexOf(powerline);
+            let index = this.powergrid.indexOf(powerline);
+            if (powerline.reactors.length < 2 && index + 1 == this.powergrid.length) {
               this.powergrid.splice(index, 1);
             } else {
               let index = powerline.reactors.indexOf(r);
@@ -171,6 +181,7 @@ export class ReactorDataService {
   }
 
   reset(): void {
+    this.setReactors(0);
     this.createPowergrid();
   }
 }

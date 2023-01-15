@@ -11,7 +11,6 @@ export class PowergridComponent implements OnInit {
 
   @Input() plants!: number;
   @Input() unit!: string;
-  reactors!: number;
 
   constructor(private data: ReactorDataService) { }
 
