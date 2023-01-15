@@ -1,5 +1,6 @@
 export enum ReactorState {
     running,
     stopped,
-    meltdown
+    meltdown,
+    destruct
 }

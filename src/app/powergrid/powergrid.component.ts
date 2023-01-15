@@ -22,7 +22,7 @@ export class PowergridComponent implements OnInit {
     return this.data.getNumberOfPowerlines();
   }
 
-  getReactorSet(index: number): IPowerline {
+  getPowerline(index: number): IPowerline {
     let powerlines = this.data.getPowerGrid();
     return powerlines[index];
   }

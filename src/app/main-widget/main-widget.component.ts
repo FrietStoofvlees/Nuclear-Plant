@@ -18,6 +18,14 @@ export class MainWidgetComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  add(): void {
+    this.data.addReactor();
+  }
+
+  reset(): void {
+    this.data.reset();
+  }
+
   onChange(newValue: string): void {
     this.unit = newValue;
     this.unitChanged.emit(this.unit);

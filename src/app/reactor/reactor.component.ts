@@ -22,6 +22,10 @@ export class ReactorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getState(): string {
+    return ReactorState[this.state];
+  }
+
   changeState(): void {
     if (this.getState() == "stopped") {
       this.state = ReactorState.running;
@@ -31,11 +35,19 @@ export class ReactorComponent implements OnInit {
       this.btnText = "Start";
     }
 
-    let reactor: IReactor = { name: parseInt(this.name.replace(/\D/g, '')), temperature: this.temperature, state: this.state }
-    this.stateChanged.emit(reactor);
+    this.sendEvent();
+    //let reactor: IReactor = { name: parseInt(this.name.replace(/\D/g, '')), temperature: this.temperature, state: this.state }
+    //this.stateChanged.emit(reactor);
   }
 
-  getState(): string {
-    return ReactorState[this.state];
+  remove(): void {
+    console.log(this);
+    this.state = ReactorState.destruct;
+    this.sendEvent();
+  }
+
+  sendEvent(): void {
+    let reactor: IReactor = { name: parseInt(this.name.replace(/\D/g, '')), temperature: this.temperature, state: this.state }
+    this.stateChanged.emit(reactor);
   }
 }
